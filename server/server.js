@@ -75,19 +75,19 @@ app.post('/users',(req,res)=> {
     
     let user= new User(req.body);
     
-//    user.save().then(()=> {
-//        return user.generateAuthToken();
-//    }).then((token)=> {
-//        res.header('x-auth',token).send(user);
-//    },(e)=> {
-//        res.status(400).send(e);
-//    }) 
+   user.save().then(()=> {
+       return user.generateAuthToken();
+   }).then((token)=> {
+       res.header('x-auth',token).send(user);
+   },(e)=> {
+       res.status(400).send(e);
+   }) 
     
-    return user.generateAuthToken().then((token)=> {
-        res.header('x-auth',token).send(user);
-    },(e)=> {
-        res.status(400).send(e);
-    }) 
+    // return user.generateAuthToken().then((token)=> {
+    //     res.header('x-auth',token).send(user);
+    // },(e)=> {
+    //     res.status(400).send(e);
+    // }) 
 })
 
 
